@@ -1,9 +1,14 @@
 [![Join the chat at https://gitter.im/EmberJsStudyGroup/hello](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/EmberJsStudyGroup/hello?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-
-Temporary - hello world.
+** Temporary - hello world.**
 
 Install nodejs, npm and ember-cli: http://guides.emberjs.com/v2.2.0/getting-started/
+
+----
+
+# Starting from scratch
+
+## Generate
 
 <pre>
 ember new hello
@@ -50,14 +55,51 @@ git push heroku master
 Run `git push heroku master` to (re-)deploy your app using the latest commit.
 Access https://emberjs-hello.herokuapp.com
 
+Source: http://www.programwitherik.com/deploy-your-ember-application-to-heroku/
 
 ----
 
-*Sources:*
+# Starting from an existing repo
 
-Getting started: http://guides.emberjs.com/v2.2.0/getting-started/
 
-Push to heroku: http://www.programwitherik.com/deploy-your-ember-application-to-heroku/
+## Setup ember project
+
+<pre>
+git clone https://github.com/EmberJsStudyGroup/hello.git
+cd hello
+npm install
+</pre>
+
+## Link with Heroku
+
+Create a (free) Heroku account and install the Heroku toolbelt: https://toolbelt.heroku.com/
+
+Link your new repo to Heroku:
+
+<pre>
+# outside your repo, run:
+
+heroku create --buildpack https://github.com/tonycoco/heroku-buildpack-ember-cli.git
+# Creating random-appname-4145... done, stack is cedar-14
+# Buildpack set. Next release on random-appname-4145 will use https://github.com/tonycoco/heroku-buildpack-ember-cli.git.
+# https://random-appname-4145.herokuapp.com/ | https://git.heroku.com/random-appname-4145.git
+
+# cd to your repo, then run:
+heroku git:remote -a emberjs-hello
+</pre>
+
+
+## Adding contributors to a Heroku app
+
+<pre>
+# from your project repository, run:
+heroku sharing:add user@email.com
+</pre>
+
+
+Sources:
+https://devcenter.heroku.com/articles/sharing
+http://stackoverflow.com/questions/5129598/how-to-link-a-folder-with-an-existing-heroku-app
 
 
 ----
