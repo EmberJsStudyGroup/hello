@@ -3,10 +3,6 @@
 
 Temporary - hello world.
 
-## Generate
-
-[![Join the chat at https://gitter.im/EmberJsStudyGroup/hello](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/EmberJsStudyGroup/hello?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 Install nodejs, npm and ember-cli: http://guides.emberjs.com/v2.2.0/getting-started/
 
 <pre>
