@@ -8,7 +8,6 @@ module.exports = function(defaults) {
   });
 
   app.import('bower_components/jquery/dist/jquery.min.js');
-  app.import('bower_components/jquery.formance/lib/jquery.payment.js');
   app.import('bower_components/bootstrap/dist/js/bootstrap.js');
   app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 
