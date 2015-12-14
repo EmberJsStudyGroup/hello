@@ -1,0 +1,15 @@
+<!--
+<ul id="main-menu">
+    {{#each item in menuItems}}
+        <li>
+            {{#link-to item.route class="btn btn-sm btn-default" target="frame-app-container"}}
+                {{item.title}}
+            {{/link-to}}
+        </li>
+    {{/each}}
+</ul>
+-->
+
+<div id="wrapper-app-container">
+    <iframe id="frame-app-container" name="frame-app-container" src="{{ defaultViewRoute }}"></iframe>
+</div>

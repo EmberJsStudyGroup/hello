@@ -1,0 +1,67 @@
+/**
+ * Global
+ **/
+* {outline:none}
+a {text-decoration: none; color:#555}
+a:hover {color:#000}
+.clear {clear:both}
+.preformat {white-space: pre-wrap; word-wrap: break-word; font-size:12px; padding:20px; font-family: monospace}
+
+/**
+ * Menu
+ **/
+#main-menu, #main-menu li {text-align: center; margin:0; padding:0}
+#main-menu {display: block; padding: 50px 0}
+#main-menu li {display: inline-block}
+
+/**
+ * Contents Frame
+ **/
+#wrapper-app-container {position: fixed; top: 50%; left: 50%}
+#frame-app-container {width: 350px; height:300px; margin:-50% 0 0 -50%; border: 1px solid #dddddd; box-shadow: rgba(0,0,0,0.2) 0 0 20px; border-radius: 10px}
+
+/**
+ * Payment Form
+ **/
+.col-row {padding:15px 10px 15px 10px; clear:both}
+.col-row:after {clear:both}
+.col-row .col-sm-8, .col-row .col-sm-6, .col-row .col-sm-4 {float:left; padding:0 5px}
+.col-sm-8 {width:66.66666667%}
+.col-sm-6 {width:50%}
+.col-sm-4 {width:33.33333333%}
+
+.form-header {padding:10px 15px 15px 15px}
+.form-footer {padding:25px 15px 0 15px; clear:both}
+
+.title, .subtitle {margin:0; padding:0}
+.title {font-size:20px; padding:5px 0}
+.subtitle {font-size:16px}
+
+.container-expires:after {clear:both}
+.container-expires input {float:left; border-radius: 0; text-align: center; padding:6px 6px}
+
+.container-expires input.first {
+    width:40%;
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.container-expires input.last {
+    width:60%;
+    border-left:none;
+    -webkit-border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-bottomright: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+::-webkit-input-placeholder {font-weight: bold}
+::-moz-placeholder {font-weight: bold} /* firefox 19+ */
+:-ms-input-placeholder {font-weight: bold} /* ie */
+input:-moz-placeholder {font-weight: bold}

@@ -1,0 +1,129 @@
+<div id="implementation-container">
+    <div class="col-row form-header">
+        <h2 class="title">Checkout</h2>
+        <h3 class="subtitle">{{ product.name }} {{ product.version }}</h3>
+    </div>
+
+    <div class="col-row">
+        <div class="col-sm-8">
+            <label>Card number:</label>
+            <input class="form-control" type="text" data-formField="CardNumber" />
+        </div>
+
+        <div class="col-sm-4">
+            <label>Expires:</label>
+            <div class="container-expires">
+                <input class="form-control first" maxlength="2" type="text" placeholder="MM" data-formField="ExpirationMonth" />
+                <input class="form-control last" maxlength="4" type="text" placeholder="YYYY" data-formField="ExpirationYear" />
+            </div>
+        </div>
+    </div>
+
+    <div class="col-row">
+        <div class="col-sm-8">
+            <label>Name on card:</label>
+            <input class="form-control" type="text" data-formField="HolderName" />
+        </div>
+
+        <div class="col-sm-4">
+            <label>CCID:</label>
+            <input class="form-control" type="text" data-formField="CCID" />
+        </div>
+    </div>
+
+    <div class="col-row form-footer">
+        <button class="btn btn-sm btn-info" data-formsubmit="1">Purchase {{ product.price.text }}</button>
+    </div>
+</div>
+
+<script>
+    var worker = new encrypter({
+        mode: 'BIND',
+        templates: {
+            alert: function (message) {
+                clearFields();
+
+                var paymentMethodObject = JSON.parse(message);
+
+                var preparedOrder = {
+                    Items: [
+                        {
+                            Code: '{{ product.code }}',
+                            Quantity: 1
+                        }
+                    ],
+                    BillingDetails: {
+                        FirstName: "John",
+                        LastName: "Doe",
+                        Email: "john.doe@shopper.com",
+                        Address: "-",
+                        City: "Alba",
+                        PostalCode: 15500,
+                        CountryCode: "ro",
+                        State: "Alba"
+                    },
+                    PaymentDetails: {
+                        Type: "ENCRYPTED_PAYMENT_DATA",
+                        Currency: "usd",
+                        PaymentMethod: {
+                            Type: paymentMethodObject.Type,
+                            Contents: paymentMethodObject.Contents,
+                            Identifier: paymentMethodObject.Identifier
+                        }
+                    }
+                };
+
+                var elementContainer = document.querySelector('#implementation-container');
+                elementContainer.innerHTML = JSON.stringify(preparedOrder, null, 2);
+                elementContainer.className = 'preformat';
+
+                var frame = parent.document.getElementById('frame-app-container');
+
+                if (frame) {
+                    frame.style.width = '800px';
+                    frame.style.height = '650px';
+                }
+            }
+        },
+        bindings: {
+            bindFieldToElement: function (fieldItem, element) {
+                fieldItem.setElementSelector('[data-formField="' + fieldItem.getCode()+ '"]');
+            }
+        },
+        key: {
+            identifier: 'emberjs-hello-key-00001',
+            contents: '-----BEGIN PUBLIC KEY-----' +
+            'MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA13PTo+cgJMtUc68br9CD' +
+            'O1+yX9L20QcBCv3HfA1lCkO9cLfi27wZ+scwISTpNXOM8MLRq3iTTHFF7JYLrk0z' +
+            'tU6E3fCqut7M/0YyHqwHbOZaw/msFBRkkfmvWq0UXNwksi7T26Yn7OHAVMyHuMFi' +
+            'dz+ggQxsIW9UVryHwvkWA+qdqcMxRy+kdw+UyFGWuSJgDEIjChffICmHiU2T+NEX' +
+            'Qp9ChjxLhvCVj6YdRlsM+EbZynPFReoIbLyI9FjBIQ1kIgBoJtgEm1X4j5l6XhKJ' +
+            '2gwJB4blWStGKjbrTkPG4tqd4ZjtiapQliMuYhz3B5kWvCKimCHZmbB3OM3bWteV' +
+            'GQIdJ3a8ScO3MmxnCLhHknth+a2pFcIOULGfR3LZr31ihFN/uzODDMU+z7AyrH9L' +
+            '4F1/3UJuUtfpz0xDPMK9zhOe0j6JQJrlLEMKSuX2CONTv39dbUqQVW9hOFpYkjZw' +
+            '70zlHCiJbi53Qpwjqt355QnUDlcxZQgmpF916ZmBMsRcyZykFEdhZXFVhCRqJ6ex' +
+            'x/428RSe0yC1mbIqm7Pmogjhwn9yKa5yIA7FaaLFQtJfzKQx4reK8+qtBJ6Wl3tN' +
+            'Za9zjzsY8HRvjmtJHfGswGvoBNEP+hWh1eAgEh7MrEKqqdU4KBwbJv7OUBIUGjm/' +
+            'QiqrQzRQzETXTdTonbnodpkCAwEAAQ==' +
+            '-----END PUBLIC KEY-----'
+        }
+    });
+
+    function clearFields() {
+        // clean fields
+        var fields = worker.getCurrentPaymentMethod().getFields();
+
+        Object.keys(fields).map(function (key) {
+            var field = fields[key];
+            var selector = field.getElementSelector();
+
+            if (null !== selector) {
+                var element = document.querySelector(selector);
+                // this doesn't ensure that all fields are cleared (in case of a custom implementation)
+                element.value = '';
+            }
+
+            return field;
+        });
+    }
+</script>

@@ -2,6 +2,9 @@
 
 module.exports = function(environment) {
   var ENV = {
+    contentSecurityPolicy: {
+      'style-src': "'self' 'unsafe-inline' 'unsafe-eval'"
+    },
     modulePrefix: 'project',
     environment: environment,
     baseURL: '/',
@@ -14,6 +17,7 @@ module.exports = function(environment) {
     },
 
     APP: {
+      remoteHost: 'http://mocksvc.mulesoft.com/mocks/544e979e-bca0-4a3e-9889-6e44585ba38b/mocks/09d76e54-7a15-45f0-97d7-5e554911a61e/mocks/f26459fc-9fb2-4946-9457-42392deae00a/3.0/'
       // Here you can pass flags/options to your application instance
       // when it is created
     }
