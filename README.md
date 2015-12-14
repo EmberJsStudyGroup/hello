@@ -68,6 +68,7 @@ Source: http://www.programwitherik.com/deploy-your-ember-application-to-heroku/
 git clone https://github.com/EmberJsStudyGroup/hello.git
 cd hello
 npm install
+bower install
 </pre>
 
 ## Link with Heroku
