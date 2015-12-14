@@ -2,10 +2,12 @@
 
 module.exports = function(environment) {
   var ENV = {
+    contentSecurityPolicyHeader: 'Content-Security-Policy',
     contentSecurityPolicy: {
-      'default-src': "'self'",
-      'style-src': "'self' 'unsafe-inline' 'unsafe-eval' https://db.tt https://dl.dropboxusercontent.com",
-      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' https://db.tt https://dl.dropboxusercontent.com"
+      'default-src': "'self' http://mocksvc.mulesoft.com http://localhost:4200 http://localhost:8080 ",
+      'style-src': "'self' 'unsafe-inline' 'unsafe-eval' http://localhost:4200 http://localhost:8080 https://db.tt https://dl.dropboxusercontent.com",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' http://localhost:4200 http://localhost:8080 https://db.tt https://dl.dropboxusercontent.com",
+      'connect-src': "'self' http://mocksvc.mulesoft.com http://localhost:4200 http://localhost:8080 "
     },
     modulePrefix: 'project',
     environment: environment,
@@ -19,7 +21,7 @@ module.exports = function(environment) {
     },
 
     APP: {
-      remoteHost: 'http://mocksvc.mulesoft.com/mocks/544e979e-bca0-4a3e-9889-6e44585ba38b/mocks/09d76e54-7a15-45f0-97d7-5e554911a61e/mocks/f26459fc-9fb2-4946-9457-42392deae00a'
+      remoteHost: 'http://localhost:8080/http://mocksvc.mulesoft.com/mocks/544e979e-bca0-4a3e-9889-6e44585ba38b/mocks/09d76e54-7a15-45f0-97d7-5e554911a61e/mocks/f26459fc-9fb2-4946-9457-42392deae00a'
       // Here you can pass flags/options to your application instance
       // when it is created
     }

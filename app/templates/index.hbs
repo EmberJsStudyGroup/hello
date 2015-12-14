@@ -1,6 +1,5 @@
-<!--
 <ul id="main-menu">
-    {{#each item in menuItems}}
+    {{#each menuItems as |item|}}
         <li>
             {{#link-to item.route class="btn btn-sm btn-default" target="frame-app-container"}}
                 {{item.title}}
@@ -8,7 +7,6 @@
         </li>
     {{/each}}
 </ul>
--->
 
 <div id="wrapper-app-container">
     <iframe id="frame-app-container" name="frame-app-container" src="{{ defaultViewRoute }}"></iframe>
